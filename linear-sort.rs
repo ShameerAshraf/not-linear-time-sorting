@@ -29,9 +29,14 @@ fn linear_sort(array: [i32; 10]) {
 
     });
 
+    let mut vec = Vec::new();
+
     for received in rx {
         //val = rx.recv().unwrap();
         println!("Got: {received}");
+        vec.push(received);
     }
+
+    println!("{:?}", vec);
 
 }
