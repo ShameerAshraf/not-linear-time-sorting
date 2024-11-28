@@ -1,4 +1,5 @@
 // sort only positive numbers
+// linear sort optimized for performance by halving sleep time
 
 use std::thread;
 use std::time::Duration;
@@ -23,7 +24,7 @@ fn linear_sort(array: [i32; 10]) {
     thread::spawn(move || {
 
         for val in array {
-            thread::sleep(Duration::from_secs(val.try_into().unwrap()));
+            thread::sleep(Duration::from_millis(500 *  <i32 as TryInto<u64>>::try_into(val).unwrap()));
             tx.send(val).unwrap();
         }
 
