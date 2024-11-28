@@ -7,7 +7,7 @@ use std::convert::TryInto;
 
 fn main() {
 
-    let array: [i32; 10] = [1, 2, 3, 4, 5, 6, 7, 8, 9 , 10];
+    let array: [i32; 10] = [6, 4, 9, 2, 8, 1, 7, 5, 3 , 10];
 
     linear_sort(array);
 
@@ -20,14 +20,16 @@ fn linear_sort(array: [i32; 10]) {
     println!("hello");
     println!("{}", array[0]);
 
-    thread::spawn(move || {
-
-        for val in array {
+    
+    for val in array {
+        let tx1 = tx.clone();
+        thread::spawn(move || {
             thread::sleep(Duration::from_secs(val.try_into().unwrap()));
-            tx.send(val).unwrap();
-        }
+                tx1.send(val).unwrap();
+        });
+    }
 
-    });
+    let _ = tx.send(0);
 
     let mut vec = Vec::new();
 
