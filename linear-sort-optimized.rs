@@ -29,7 +29,7 @@ fn linear_sort(array: [i32; 10]) {
         });
     }
 
-    let _ = tx.send(0);
+    drop(tx);
 
     let mut vec = Vec::new();
 
