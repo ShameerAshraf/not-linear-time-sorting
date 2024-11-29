@@ -6,7 +6,7 @@ import (
 )
 
 func linearSortGoRoutine(num int, c chan<- int) {
-    time.Sleep(500 * time.Duration(num) * time.Millisecond)
+    time.Sleep(10 * time.Duration(num) * time.Millisecond)
     c <- num
 }
 
