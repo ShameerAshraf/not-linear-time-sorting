@@ -18,7 +18,7 @@ fn linear_sort(array: [i32; 10]) {
     for val in array {
         let tx1 = tx.clone();
         thread::spawn(move || {
-            thread::sleep(Duration::from_millis(500 *  <i32 as TryInto<u64>>::try_into(val).unwrap()));
+            thread::sleep(Duration::from_millis(50 *  <i32 as TryInto<u64>>::try_into(val).unwrap()));
             tx1.send(val).unwrap();
         });
     }
